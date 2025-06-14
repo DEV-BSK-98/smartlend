@@ -5,7 +5,6 @@
 // import { factories } from '@strapi/strapi'
 
 // export default factories.createCoreController('api::applicant.applicant');
-
 import { factories } from '@strapi/strapi';
 import { sanitize } from '@strapi/utils';
 
@@ -13,14 +12,27 @@ export default factories.createCoreController('api::applicant.applicant', ({ str
     async search(ctx) {
         const { email, phone, name } = ctx.query;
 
-        const filters: Record<string, any> = {};
+        const orFilters = [];
 
-        if (email) filters.email = { $containsi: email };
-        if (phone) filters.phone = { $containsi: phone };
-        if (name) filters.name = { $containsi: name };
+        if (email) {
+        orFilters.push({ email: { $containsi: email } });
+        }
+        if (phone) {
+        orFilters.push({ phone: { $containsi: phone } });
+        }
+        if (name) {
+        orFilters.push({ name: { $containsi: name } });
+        }
+
+        if (orFilters.length === 0) {
+        // If no search params provided, return empty result
+        return [];
+        }
 
         const results = await strapi.entityService.findMany('api::applicant.applicant', {
-        filters,
+        filters: {
+            $or: orFilters,
+        },
         });
 
         const sanitizedResults = await sanitize.contentAPI.output(results, strapi.getModel('api::applicant.applicant'));
