@@ -1,14 +1,12 @@
-import type { Route } from '@strapi/types';
-
-const customRoutes: Route[] = [
-  {
-    method: 'GET',
-    path: '/applicants/search',
-    handler: 'api::applicant.applicant.search',
-    config: {
-      auth: false,
-    },
-  },
-];
-
-export default customRoutes;
+export default {
+    routes: [
+        {
+        method: 'GET',
+        path: '/applicants/search',
+        handler: 'applicant.search',
+        config: {
+            auth: false, // Set to true if you want authentication
+        },
+        },
+    ],
+};

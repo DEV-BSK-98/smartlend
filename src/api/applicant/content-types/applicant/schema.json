@@ -4,7 +4,8 @@
   "info": {
     "singularName": "applicant",
     "pluralName": "applicants",
-    "displayName": "Applicant"
+    "displayName": "Applicant",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -41,6 +42,22 @@
       "relation": "oneToMany",
       "target": "api::credit-evaluation.credit-evaluation",
       "mappedBy": "applicant"
+    },
+    "outstanding_balance": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "loan_amount": {
+      "type": "decimal",
+      "required": true,
+      "default": 0
+    },
+    "employment_type": {
+      "type": "string"
+    },
+    "Pmec": {
+      "type": "string"
     }
   }
 }

@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiApplicantApplicant extends Struct.CollectionTypeSchema {
   collectionName: 'applicants';
   info: {
+    description: '';
     displayName: 'Applicant';
     pluralName: 'applicants';
     singularName: 'applicant';
@@ -393,16 +394,24 @@ export interface ApiApplicantApplicant extends Struct.CollectionTypeSchema {
     Email: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    employment_type: Schema.Attribute.String;
     FullName: Schema.Attribute.String & Schema.Attribute.Required;
+    loan_amount: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::applicant.applicant'
     > &
       Schema.Attribute.Private;
+    outstanding_balance: Schema.Attribute.Decimal &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
     Phone: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    Pmec: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     SSN: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
