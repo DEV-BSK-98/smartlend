@@ -395,7 +395,9 @@ export interface ApiApplicantApplicant extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     employment_type: Schema.Attribute.String;
+    FirstName: Schema.Attribute.String & Schema.Attribute.Required;
     FullName: Schema.Attribute.String & Schema.Attribute.Required;
+    LastName: Schema.Attribute.String & Schema.Attribute.Required;
     loan_amount: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;
@@ -405,6 +407,7 @@ export interface ApiApplicantApplicant extends Struct.CollectionTypeSchema {
       'api::applicant.applicant'
     > &
       Schema.Attribute.Private;
+    OtherName: Schema.Attribute.String;
     outstanding_balance: Schema.Attribute.Decimal &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;

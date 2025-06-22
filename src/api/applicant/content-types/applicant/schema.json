@@ -58,6 +58,17 @@
     },
     "Pmec": {
       "type": "string"
+    },
+    "FirstName": {
+      "type": "string",
+      "required": true
+    },
+    "LastName": {
+      "type": "string",
+      "required": true
+    },
+    "OtherName": {
+      "type": "string"
     }
   }
 }
