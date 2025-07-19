@@ -69,6 +69,15 @@
     },
     "OtherName": {
       "type": "string"
+    },
+    "Nrc_No": {
+      "type": "string"
+    },
+    "TPIN": {
+      "type": "biginteger"
+    },
+    "Gender": {
+      "type": "string"
     }
   }
 }
